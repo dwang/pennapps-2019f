@@ -1,0 +1,6 @@
+version: '3'
+services:
+  pennapps-2019f:
+    build: .
+    ports:
+      - "8000:8000"
