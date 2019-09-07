@@ -7,16 +7,15 @@ def get_headlines(ticker):
 
     headline_texts = []
 
-    # get current date and find the number of existing pages
-    current_date = datetime.datetime.now().strftime("%Y/%m/%d")
-    page_link = f"https://www.wsj.com/search/term.html?KEYWORDS={ticker}&min-date=2000/01/01&max-date={current_date}&isAdvanced=true&sort=date-desc&source=wsjarticle,wsjblogs,wsjvideo,interactivemedia,sitesearch,press,newswire,wsjpro&page=1"
+    # find number of pages
+    page_link = f"https://www.wsj.com/search/term.html?KEYWORDS={ticker}&min-date=2012/07/01&max-date=2017/07/01&isAdvanced=true&sort=date-desc&source=wsjarticle,wsjblogs,wsjvideo,interactivemedia,sitesearch,press,newswire,wsjpro&page=1"
     page_response = requests.get(page_link, timeout=5)
     page_content = bs(page_response.content, "lxml")
     page_count = int(page_content.find_all("li", class_ = "results-count")[1].text[3:])
 
     # iterate through each page to get their headers
     while (page_number <= page_count):
-        page_link = f"https://www.wsj.com/search/term.html?KEYWORDS={ticker}&min-date=2000/01/01&max-date={current_date}&isAdvanced=true&sort=date-desc&source=wsjarticle,wsjblogs,wsjvideo,interactivemedia,sitesearch,press,newswire,wsjpro&page={page_number}"
+        page_link = f"https://www.wsj.com/search/term.html?KEYWORDS={ticker}&min-date=2012/07/01&max-date=2017/07/01&isAdvanced=true&sort=date-desc&source=wsjarticle,wsjblogs,wsjvideo,interactivemedia,sitesearch,press,newswire,wsjpro&page={page_number}"
 
         page_response = requests.get(page_link, timeout=5)
 
