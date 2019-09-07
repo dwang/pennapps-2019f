@@ -29,8 +29,7 @@ def get_marquee_data(ticker):
         "where": {
             "ticker": ticker
         },
-        "startDate": "2017-01-15",
-        "endDate": "2018-01-15"
+        "startDate": "2012-07-01"
     }
 
     request = session.post(
