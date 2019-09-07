@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Livvic);
-@import url(https://fonts.googleapis.com/css?family=Quicksand);
-
 body {
     background: rgb(74, 74, 74);
     overflow: hidden;
@@ -50,14 +47,12 @@ ul li {
 }
 
 .navbar {
-    /* display: flex */
     text-align: center;
     align-content: center;
     justify-content: center;
 }
 
 div.stonks {
-    /* background: black; */
     color: white;
     border-radius: 1em;
     padding: 1em;
@@ -68,20 +63,14 @@ div.stonks {
     transform: translate(-50%, -50%)
 }
 
-.part1 {
+.title {
     font-family: 'Quicksand', sans-serif;
+    letter-spacing: 0.15em;
+}
+
+.aqua {
     color: rgb(122, 228, 255);
-    letter-spacing: 0.15em;
-    font-size: 50px;
 }
-
-.part2 {
-    font-family: 'Quicksand', sans-serif;
-    letter-spacing: 0.15em;
-    font-size: 50px;
-    line-height: 1.2em;
-}
-
 
 .description {
     position: absolute;
