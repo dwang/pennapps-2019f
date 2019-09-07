@@ -13,7 +13,7 @@ auth_data = {
 }
 
 
-def get_marquee_data(ticker):
+def query_dataset(ticker):
     session = requests.Session()
 
     auth_request = session.post(
@@ -37,6 +37,24 @@ def get_marquee_data(ticker):
     results = json.loads(request.text)
 
     return results
+
+def get_asset(ticker):
+  session = requests.Session()
+
+  auth_request = session.post(
+      "https://idfs.gs.com/as/token.oauth2", data=auth_data)
+  access_token_dict = json.loads(auth_request.text)
+  access_token = access_token_dict["access_token"]
+
+  session.headers.update({"Authorization": "Bearer " + access_token})
+
+
+  request_url = "https://api.marquee.gs.com/v1/assets"
+
+  request = session.get(url=request_url, params={"ticker": ticker, "assetClassificationsIsPrimary": "true"} )
+  results = json.loads(request.text)
+
+  return results
 
 
 def get_marquee_tickers():
