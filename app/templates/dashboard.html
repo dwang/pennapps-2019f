@@ -10,69 +10,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
     <div class="container">
         <h1 style="padding-top: 0.3em">{{ ticker }}</h1>
         <div class="shadow p-3 mb-5 bg-white rounded">
-            <canvas id="gsChart" width="30vw" height="8vh"></canvas>
-        </div>
-        <div class="row">
-          <div class="col-md-7">
-             <div class="col-md-13 shadow p-3 mb-5 bg-white rounded">
-                <canvas id="psChart" width="12vw" height="5vh"></canvas>
-             </div>
-          </div>
-          <div class="col-md-5">
-             <div class="col-md-13" style="text-align: center; padding: 10px; height: 5vh">
-                <span style="font-size: 4vh">Media Sentiment</span>
-                <ul class="list-group" style="max-height:175px; overflow-y:scroll">
-                  <li class="list-group-item" id="0">Select an Extremum</li>
-                  <li class="list-group-item" id="1"></li>
-                  <li class="list-group-item" id="2"></li>
-                  <li class="list-group-item" id="3"></li>
-                  <li class="list-group-item" id="4"></li>
-                  <li class="list-group-item" id="5"></li>
-                  <li class="list-group-item" id="6"></li>
-                  <li class="list-group-item" id="7"></li>
-                  <li class="list-group-item" id="8"></li>
-                  <li class="list-group-item" id="9"></li>
-                </ul>
-             </div>
-          </div>
+            <canvas id="gsChart" width="30vw" height="17vh"></canvas>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
