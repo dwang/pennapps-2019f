@@ -1,6 +1,7 @@
 import csv
 import tweet_scraping
 import web_scraping
+import time
 
 with open("marquee.csv") as csvfile:
   with open("marquee_output.csv", "w") as csvresult:
@@ -21,6 +22,7 @@ with open("marquee.csv") as csvfile:
         row.append(twitter_sentiment)
         writer.writerow(row)
         print(row)
+        time.sleep(1)
 
       i += 1
 
