@@ -111,23 +111,6 @@
                 }
             }
         });
-
-        document.getElementById("gsChart").onclick = function(evt){
-            var points = myChart.getElementsAtEvent(evt);
-            var index = points[0]._index;
-
-            //for (var i = 0; i < 10; i++) {
-            //   document.getElementById(i.toString()).innerHTML = "http://stonks.space/api/tweetscraper/query/" + {{ ticker }} + "/" + {{ date }} + "/" + {{ index }}
-            }
-        };
-
-        fetch('http://stonks.space/api/tweetscraper/query/' + {{ ticker }} + "/" + {{ date }} + "/" + {{ index }})
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(myJson) {
-            console.log(JSON.stringify(myJson));
-          });
     </script>
 </body>
 
