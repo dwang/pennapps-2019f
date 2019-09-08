@@ -10,19 +10,24 @@ def get_tweets(query, start_date, end_date):
 
     overall_sentiment_score = 0.0
 
-    for tweet in got.manager.TweetManager.getTweets(tweet_criteria):
-        try:
-            sentiment = sentiment_analysis.analyze(tweet.text)[0]
-            category = content_classification.classify(tweet.text)
+    try:
+        tweet = got.manager.TweetManager.getTweets(tweet_criteria)[0]
+    except Exception as e:
+        print(f"Exception: {e}")
+        pass
 
-            if category == "News/Politics" or category == "/Finance/Investing":
-                sentiment.score *= 1.5
+    try:
+        sentiment = sentiment_analysis.analyze(tweet.text)[0]
+        category = content_classification.classify(tweet.text)
 
-            overall_sentiment_score += sentiment.score
-            print(f"{tweet.text}: {category} {sentiment.score}\n")
-        except Exception as e:
-            print(f"Exception: {e}")
-            pass
+        if category == "News/Politics" or category == "/Finance/Investing":
+            sentiment.score *= 1.5
+
+        overall_sentiment_score += sentiment.score
+        print(f"{tweet.text}: {category} {sentiment.score}\n")
+    except Exception as e:
+        print(f"Exception: {e}")
+        pass
 
     return overall_sentiment_score
 
