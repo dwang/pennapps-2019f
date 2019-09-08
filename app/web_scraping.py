@@ -51,3 +51,5 @@ def get_headlines(ticker):
         page_number += 1
 
     return(headline_texts)
+
+def 
