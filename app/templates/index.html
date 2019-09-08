@@ -25,17 +25,19 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col-md-auto">
-                <form class="form-inline">
+                <form class="form-inline" method="POST" action="/dashboard">
                     <label class="sr-only" for="inlineFormInputGroupUsername2">AAPL</label>
-                    <div class="col-xs-4 input-group mb-2 mr-sm-2">
+                    <!-- <div class="col-xs-4 input-group mb-2 mr-sm-2"> -->
                         <div class="input-group-prepend">
                             <div class="input-group-text">Ticker</div>
                         </div>
 
-                        <input type="text" class="form-control input-lg" id="inputlg" placeholder="AAPL">
-                    </div>
+                        <!-- <form > -->
+                            <input type="text" class="form-control input-lg" id="inputlg" placeholder="AAPL"aria-label="Ticker"
+                    aria-describedby="basic-addon1">
 
-                    <button type="submit" class="btn btn-primary mb-2" >Submit</button>
+                            <button type="submit" class="btn btn-primary mb-2" >Submit</button>
+                        <!-- </form> -->
                 </form>
             </div>
             <div class="col"></div>
@@ -45,7 +47,7 @@
 
         <br>
 
-        <div class="jumbotron">
+        <div class="jumbotron text-align">
             <h3>A new method to track and compare companies' progress using a visualizer news.</h3>
             <br>
             <span class="made">Support provided by <code class="color">Marquee API</code> by Goldman Sachs and AI
