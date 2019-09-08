@@ -19,22 +19,34 @@
             <div class="col-md-3"></div>
         </div>
 
-        <br>
+        <br> <br> <br>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Ticker</span>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col-md-auto">
+                <form class="form-inline">
+                    <label class="sr-only" for="inlineFormInputGroupUsername2">AAPL</label>
+                    <div class="col-xs-4 input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Ticker</div>
+                        </div>
+
+                        <input type="text" class="form-control input-lg" id="inputlg" placeholder="AAPL">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-2" >Submit</button>
+                </form>
             </div>
-            <form method="POST" action="/dashboard">
-                    <input type="text" name="ticker" class="form-control input-field" placeholder="AAPL" aria-label="Ticker"
-                    aria-describedby="basic-addon1">
-                    <button class="btn" name="submit">Submit</button>
-            </form>
+            <div class="col"></div>
+            <div class="col"></div>
+
         </div>
 
+        <br>
+
         <div class="jumbotron">
-            <h3>A new method to track and compare companies' progress using a visualizer and
-                news.</h3>
+            <h3>A new method to track and compare companies' progress using a visualizer news.</h3>
             <br>
             <span class="made">Support provided by <code class="color">Marquee API</code> by Goldman Sachs and AI
                 provided by <code class="color">Google Cloud Platform</code>.</span>
