@@ -4,32 +4,30 @@ import content_classification
 import datetime
 
 
-def get_tweets(query, start_date, end_date):
+def get_tweets(query, start_date, end_date, get_sentiment=True):
     tweet_criteria = got.manager.TweetCriteria().setQuerySearch(query).setSince(
-        start_date).setUntil(end_date).setTopTweets(True).setMaxTweets(1)
+        start_date).setUntil(end_date).setTopTweets(True).setMaxTweets(10)
 
     overall_sentiment_score = 0.0
 
-    try:
-        tweet = got.manager.TweetManager.getTweets(tweet_criteria)[0]
-    except Exception as e:
-        print(f"Exception: {e}")
-        pass
+    for tweet in got.manager.TweetManager.getTweets(tweet_criteria):
+        try:
+            sentiment = sentiment_analysis.analyze(tweet.text)[0]
+            category = content_classification.classify(tweet.text)
 
-    try:
-        sentiment = sentiment_analysis.analyze(tweet.text)[0]
-        category = content_classification.classify(tweet.text)
+            if category == "News/Politics" or category == "/Finance/Investing":
+                sentiment.score *= 1.5
 
-        if category == "News/Politics" or category == "/Finance/Investing":
-            sentiment.score *= 1.5
+            overall_sentiment_score += sentiment.score
+            print(f"{tweet.text}: {category} {sentiment.score}\n")
+        except Exception as e:
+            print(f"Exception: {e}")
+            pass
 
-        overall_sentiment_score += sentiment.score
-        print(f"{tweet.text}: {category} {sentiment.score}\n")
-    except Exception as e:
-        print(f"Exception: {e}")
-        pass
-
-    return overall_sentiment_score
+    if get_sentiment:
+        return overall_sentiment_score
+    else:
+        return got.manager.TweetManager.getTweets(tweet_criteria)
 
 if __name__ == "__main__":
     print(get_tweets("AAPL", "2019-09-01", "2019-09-03"))
