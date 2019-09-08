@@ -46,9 +46,12 @@ def forecast():
         score = predict.analyze_url(link)
         integrated_factor = automl_query(score)
 
+        print(integrated_factor)
+
         return render_template("forecast.html", ticker=ticker, integrated_factor=integrated_factor)
 
     return render_template("forecast.html")
+
 
 @app.route("/api/automl/query/<sentiment_score>")
 def automl_query(sentiment_score):

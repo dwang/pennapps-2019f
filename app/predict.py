@@ -7,4 +7,4 @@ def analyze_url(url):
 
     result = sentiment_analysis.analyze(article.text)
 
-    return result[0]
+    return result[0].score
