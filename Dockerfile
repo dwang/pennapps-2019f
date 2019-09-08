@@ -2,7 +2,7 @@ FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.8
 
 LABEL maintainer "Daniel Wang <hello@danielwang.dev>"
 
-RUN apk add --no-cache g++
+RUN apk add --update --no-cache g++ gcc libxslt-dev
 
 RUN pip install --upgrade pip
 COPY requirements.txt /
