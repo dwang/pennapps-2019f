@@ -2,6 +2,7 @@ import marquee
 import alphavantage
 import requests
 import os
+import predict
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
@@ -35,6 +36,19 @@ def dashboard():
 
     return redirect(url_for("home"))
 
+
+@app.route("/forecast", methods=["GET", "POST"])
+def forecast():
+    if request.method == "POST":
+        ticker = request.form.get("ticker")
+        link = request.form.get("link")
+
+        score = predict.analyze_url(link)
+        integrated_factor = automl_query(score)
+
+        return render_template("forecast.html", ticker=ticker, integrated_factor=integrated_factor)
+
+    return render_template("forecast.html")
 
 @app.route("/api/automl/query/<sentiment_score>")
 def automl_query(sentiment_score):

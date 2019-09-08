@@ -27,6 +27,12 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col-md-auto">
+
+
+                <h1>Forecast with News</h1>
+                <hr>
+                <p>Using a custom trained model on Google's AutoML, you can predict the integrated factor of a stock.</p>
+
                 <form class="form-inline input-group" method="POST" action="/dashboard">
                     <label class="sr-only" for="basic-addon1">Ticker</label>
                     <div class="input-group-prepend">
@@ -36,15 +42,18 @@
                     <input type="text" name="ticker" class="form-control tickers" placeholder="AAPL - Apple Inc" aria-label="Ticker"
                         aria-describedby="basic-addon1" required>
 
-
-
                     <label class="sr-only" for="basic-addon1">Ticker</label>
+
+                    &nbsp &nbsp &nbsp &nbsp
+
                     <div class="input-group-prepend">
                         <span class="input-group-text">News Article</span>
                     </div>
                     <input type="text" name="link" class="form-control tickers" placeholder="https://cnn.com" aria-label="URL"
                         aria-describedby="basic-addon1" required>
 
+
+                    &nbsp &nbsp &nbsp &nbsp
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
