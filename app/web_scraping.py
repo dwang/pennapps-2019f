@@ -40,6 +40,10 @@ def get_headlines(ticker):
 
             headline_texts.append(info)
 
+            break
+
+        break
+
         page_number += 1
 
     return(headline_texts)

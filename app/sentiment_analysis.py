@@ -7,13 +7,17 @@ def analyze(text):
     client = language.LanguageServiceClient.from_service_account_json(
         "account.json")
 
+    encoding_type = enums.EncodingType.UTF8
+
     document = types.Document(
         content=text,
         type=enums.Document.Type.PLAIN_TEXT)
     sentiment = client.analyze_sentiment(
-        document=document).document_sentiment.score
+        document=document).document_sentiment
 
-    return sentiment
+    entity_type = enums.Entity.Type(client.analyze_entities(document, encoding_type=encoding_type).entities[0].type).name
+
+    return (sentiment, entity_type)
 
 
 if __name__ == '__main__':
