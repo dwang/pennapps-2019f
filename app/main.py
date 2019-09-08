@@ -1,5 +1,6 @@
 import marquee
 import alphavantage
+import requests
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
@@ -32,6 +33,13 @@ def dashboard():
         return render_template("dashboard.html", ticker=request.form.get("ticker"), integrated_factor=integrated_factor, growth=growth, financial_returns=financial_returns, multiple=multiple)
 
     return redirect(url_for("home"))
+
+
+@app.route("/api/automl/query/<sentiment_score>")
+def automl_query(sentiment_score):
+    data = { "payload": { "row": { "values": [ "0.298", "31.9346", "10/9/2014", "0.74", "0.204" ], "columnSpecIds": [ "6570527555961487360", "8876370565175181312", "3111763042140946432", "7723449060568334336", "1958841537534099456" ] } } }
+    r = requests.post("https://automl.googleapis.com/v1beta1/projects/193759269805/locations/us-central1/models/TBL5254566069141504000:predict", data=data, headers={"Authorization": "Bearer AIzaSyB-q9QT3T2wraShhju7tKa1UQetvAsyZVs"})
+    return r.text
 
 
 @app.route("/api/marquee/query/<ticker>")
