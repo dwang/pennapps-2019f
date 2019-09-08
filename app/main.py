@@ -7,6 +7,10 @@ app = Flask(__name__)
 def hello_world():
     return render_template("index.html")
 
+@app.route("/dashboard")
+def hello():
+    return render_template("dashboard.html")
+
 
 @app.route("/api/marquee/query/<ticker>")
 def query_dataset(ticker):

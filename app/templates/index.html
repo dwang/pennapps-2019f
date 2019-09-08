@@ -7,27 +7,39 @@
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Livvic|Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' )}}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
-
-    <div class="navbar">
-        <nav class="topnav">
-            <ul>
-                <li><a href="/" class="links">Home</a></li>
-                <li><a href="/info" class="links">Explore</a></li>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">awoo</a>
+              </li>
             </ul>
+          </div>
         </nav>
-    </div>
+    <!-- </div> -->
 
+    <div class="container">
+        <div class="stonks">
+            <h2 class="title"><span class="woohoo">STONKS</span> &nbsp space</h2>
+        </div>
 
-    <div class="stonks">
-        <h2 class="title"><span class="aqua">STONKS</span> &nbsp space</h2>
-    </div>
+        <div class="description shadow p-3 mb-5 bg-white rounded">
+            <h3 class="website-description">A new method to track and compare companies' progress using a visualizer and news.</h3>
+            <br />
+            <span class="made">Support provided by <code class="color">Marquee API</code> by Goldman Sachs and AI provided by <code class="color">Google Cloud Platform</code>.</span>
+        </div>
 
-    <div class="description">
-        <h3 class="website-description"><span class="markdown">stonks.space</span></h3>
     </div>
 
 </body>
