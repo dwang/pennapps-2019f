@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Dashboard</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
@@ -11,20 +12,24 @@
 
 <body>
     <div class="container">
-        <h1>{{ ticker }}</h1>
-        <canvas id="gsChart" width="400" height="400"></canvas>
+        <h1 style="padding-top: 1em">{{ ticker }}</h1>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <canvas id="gsChart" width="30vh" height="10vh"></canvas>
+        </div>
     </div>
-
+    <div>
+        {{ data["data"] }}
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script>
-        var ctx = document.getElementById('gsChart').getContext('2d');
+        var ctx = document.getElementById("gsChart").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'Sentiment Score',
+                    data: {{  }},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -51,6 +56,15 @@
                             beginAtZero: true
                         }
                     }]
+                },
+                elements: {
+                    line: {
+                        tension: 0 // disables bezier curves
+                    }
+                },
+                legend: {
+                    display: true,
+                    position: "left"
                 }
             }
         });

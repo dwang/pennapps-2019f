@@ -13,7 +13,8 @@ def home():
 def dashboard():
     if request.method == "POST":
         ticker = request.form.get("ticker")
-        return render_template("dashboard.html", ticker=ticker)
+        data = marquee.query_dataset(ticker)
+        return render_template("dashboard.html", ticker=ticker, data=data)
 
     return redirect(url_for("home"))
 
