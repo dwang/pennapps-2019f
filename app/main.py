@@ -68,12 +68,12 @@ def query_prices(ticker, date):
 
 
 @app.route("/api/tweetscraper/query/<ticker>/<date>/<index>")
-def find_tweets(ticker, date):
+def find_tweets(ticker, date, index):
     two_week_difference = datetime.timedelta(7);
     end_date = datetime.datetime(int(date[:4]), int(date[5:7]), int(date[8:]))
     start_date = end_date - two_week_difference
     tweets = tweet_scraping.get_tweets(ticker, str(start_date.year) + "-" + str(start_date.month) + "-" + str(start_date.day), date, False)
-    
+
     return tweets[index]
 
 
