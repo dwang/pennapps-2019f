@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Stonks | Home</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center" style="padding-top: 5em">
+                <h1><span style="color: green">stonks</span>.space</h1>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col-md-auto">
+                <form class="form-inline input-group" method="POST" action="/dashboard">
+                    <label class="sr-only" for="basic-addon1">Ticker</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Ticker</span>
+                    </div>
+
+                    <input type="text" name="ticker" class="form-control tickers" placeholder="AAPL - Apple Inc" aria-label="Ticker"
+                        aria-describedby="basic-addon1" required>
+
+
+
+                    <label class="sr-only" for="basic-addon1">Ticker</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">News Article</span>
+                    </div>
+                    <input type="text" name="link" class="form-control tickers" placeholder="https://cnn.com" aria-label="URL"
+                        aria-describedby="basic-addon1" required>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+
+        <br>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"
+        integrity="sha256-LOnFraxKlOhESwdU/dX+K0GArwymUDups0czPWLEg4E=" crossorigin="anonymous"></script>
+
+    <script>
+        $.get("{{ url_for('static', filename='json/companies.json') }}", function (data) {
+            $(".tickers").typeahead({ source: data, displayText: function (item) { return item[0] + " - " + item[1]; } });
+        }, 'json')
+    </script>
+</body>
+
+</html>

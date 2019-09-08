@@ -8,6 +8,3 @@ def analyze_url(url):
     result = sentiment_analysis.analyze(article.text)
 
     return result[0]
-   
-
-print(analyze_url("https://thehill.com/homenews/sunday-talk-shows/460400-sunday-shows-preview-pompeo-faces-questions-amid-trump"))
