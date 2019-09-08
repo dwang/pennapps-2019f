@@ -24,8 +24,11 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Ticker</span>
             </div>
-            <input type="text" class="form-control input-field" placeholder="AAPL" aria-label="Ticker"
-                aria-describedby="basic-addon1">
+            <form method="POST" action="/dashboard">
+                    <input type="text" name="ticker" class="form-control input-field" placeholder="AAPL" aria-label="Ticker"
+                    aria-describedby="basic-addon1">
+                    <button class="btn" name="submit">Submit</button>
+            </form>
         </div>
 
         <div class="jumbotron">
