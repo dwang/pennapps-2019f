@@ -10,21 +10,41 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="height:100%">
     <div class="container">
-        <h1 style="padding-top: 1em">{{ ticker }}</h1>
+        <h1 style="padding-top: 0.3em; font-size:20px">{{ ticker }}</h1>
         <div class="shadow p-3 mb-5 bg-white rounded">
             <canvas id="gsChart" width="30vw" height="8vh"></canvas>
         </div>
         <div class="row">
-          <div class="col-md-5">
-             <div class="col-md-13 shadow p-3 mb-5 bg-white rounded">
-                Some Content..
-             </div>
-          </div>
           <div class="col-md-7">
              <div class="col-md-13 shadow p-3 mb-5 bg-white rounded">
-                Some Second Content..
+                <canvas id="psChart" width="12vw" height="5vh"></canvas>
+             </div>
+          </div>
+          <div class="col-md-5" >
+             <div class="col-md-13" style="text-align:center; padding:10px; height:5vh">
+                <span style="font-size:4vh">Media Sentiment</span>
+                <ul class="list-group" style="max-height:175px; overflow-y:scroll">
+                  <li class="list-group-item">First item</li>
+                  <li class="list-group-item">Second item</li>
+                  <li class="list-group-item">Third item</li>
+                  <li class="list-group-item">First item</li>
+                  <li class="list-group-item">Second item</li>
+                  <li class="list-group-item">Third item</li>
+                  <li class="list-group-item">First item</li>
+                  <li class="list-group-item">Second item</li>
+                  <li class="list-group-item">Third item</li>
+                  <li class="list-group-item">First item</li>
+                  <li class="list-group-item">Second item</li>
+                  <li class="list-group-item">Third item</li>
+                  <li class="list-group-item">First item</li>
+                  <li class="list-group-item">Second item</li>
+                  <li class="list-group-item">Third item</li>
+                  <li class="list-group-item">First item</li>
+                  <li class="list-group-item">Second item</li>
+                  <li class="list-group-item">Third item</li>
+                </ul>
              </div>
           </div>
         </div>
@@ -79,7 +99,7 @@
         });
     </script>
     <script>
-        var ctx = document.getElementById("priceChart").getContext('2d');
+        var ctx = document.getElementById("psChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
