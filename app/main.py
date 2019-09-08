@@ -38,8 +38,20 @@ def dashboard():
 
 @app.route("/api/automl/query/<sentiment_score>")
 def automl_query(sentiment_score):
-    data = '{"payload":{"row":{"values":[sentiment_score],"columnSpecIds":["5129375675202928640"]}}}'
-    r = requests.post("https://automl.googleapis.com/v1beta1/projects/193759269805/locations/us-central1/models/TBL2464599294125015040:predict", data=data, headers={"Content-Type": "application/json", "Authorization": "Bearer " + os.getenv("GCLOUD_API_KEY")})
+    data = {
+        "payload": {
+            "row": {
+                "values": [
+                    sentiment_score
+                ],
+                "columnSpecIds": [
+                    "5129375675202928640"
+                ]
+            }
+        }
+    }
+
+    r = requests.post("https://automl.googleapis.com/v1beta1/projects/193759269805/locations/us-central1/models/TBL2464599294125015040:predict", json=data, headers={"Authorization": "Bearer " + os.getenv("GCLOUD_API_KEY")})
     return r.text
 
 
