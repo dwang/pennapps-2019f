@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup as bs
 import requests
-import datetime
+from datetime import datetime
 
 def get_headlines(ticker):
     page_number = 1
@@ -26,23 +26,27 @@ def get_headlines(ticker):
         for headline_container in headline_containers:
             info = []
 
-            # get headline informationn
+            # get headline text
             headline = headline_container.find("h3", class_ = "headline").find("a").text
-            publish_date = headline_container.find("time", class_ = "date-stamp-container").text
             summary = headline_container.find("div", class_ = "summary-container")
-
-            info.append(headline)
-            info.append(publish_date)
 
             # only add headline summary if it exists
             if summary:
-                info.append(summary.find("p").text)
+                headline += ". " + summary.find("p").text
+
+            info.append(headline);
+
+
+            # get and add formatted publish date of headline
+            publish_date = headline_container.find("time", class_ = "date-stamp-container").text
+            publish_date_info = publish_date.split()
+            formatted_publish_date = datetime.strptime(publish_date_info[0][:3] + " " + publish_date_info[1].rjust(2) + " " + publish_date_info[2], "%b %d, %Y").strftime("%Y-%m-%d")
+            print(formatted_publish_date)
+
+            info.append(formatted_publish_date)
+
 
             headline_texts.append(info)
-
-            break
-
-        break
 
         page_number += 1
 
