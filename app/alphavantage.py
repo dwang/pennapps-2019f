@@ -11,4 +11,5 @@ def query_prices(ticker, date):
 
     time_series = r.json()["Time Series (Daily)"]
 
+
     return time_series[date]["4. close"]

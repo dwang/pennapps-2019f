@@ -4,15 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Dashboard</title>
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Stonks | Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 
-<body style="height:100%">
+<body>
     <div class="container">
-        <h1 style="padding-top: 0.3em; font-size:20px">{{ ticker }}</h1>
+        <h1 style="padding-top: 0.3em">{{ ticker }}</h1>
         <div class="shadow p-3 mb-5 bg-white rounded">
             <canvas id="gsChart" width="30vw" height="8vh"></canvas>
         </div>
@@ -22,9 +21,9 @@
                 <canvas id="psChart" width="12vw" height="5vh"></canvas>
              </div>
           </div>
-          <div class="col-md-5" >
-             <div class="col-md-13" style="text-align:center; padding:10px; height:5vh">
-                <span style="font-size:4vh">Media Sentiment</span>
+          <div class="col-md-5">
+             <div class="col-md-13" style="text-align: center; padding: 10px; height: 5vh">
+                <span style="font-size: 4vh">Media Sentiment</span>
                 <ul class="list-group" style="max-height:175px; overflow-y:scroll">
                   <li class="list-group-item">First item</li>
                   <li class="list-group-item">Second item</li>
@@ -67,58 +66,58 @@
             data: {
                 labels: ["2012 FYQ3", "2012 FYQ4", "2013 FYQ1", "2013 FYQ2", "2013 FYQ3", "2013 FYQ4", "2014 FYQ1", "2014 FYQ2", "2014 FYQ3", "2014 FYQ4", "2015 FYQ1", "2015 FYQ2", "2015 FYQ3", "2015 FYQ4", "2016 FYQ1", "2016 FYQ2", "2016 FYQ3", "2016 FYQ4", "2017 FYQ1", "2017 FYQ2", "2017 FYQ3"],
                 datasets: [
-                    {
-                        label: 'Growth',
-                        fill: false,
-                        backgroundColor: window.chartColors.blue,
-                        borderColor: window.chartColors.blue,
-                        data: {{ growth }}
-        },
-            {
-                label: 'Financial Returns',
-                fill: false,
-                backgroundColor: window.chartColors.green,
-                borderColor: window.chartColors.green,
-                data: {{ financial_returns }}
+                {
+                    label: 'Growth',
+                    fill: false,
+                    backgroundColor: window.chartColors.blue,
+                    borderColor: window.chartColors.blue,
+                    data: {{ growth }}
                 },
-        {
-            label: 'Multiple',
-                fill: false,
+                {
+                    label: 'Financial Returns',
+                    fill: false,
+                    backgroundColor: window.chartColors.green,
+                    borderColor: window.chartColors.green,
+                    data: {{ financial_returns }}
+                },
+                {
+                    label: 'Multiple',
+                    fill: false,
                     backgroundColor: window.chartColors.yellow,
-                        borderColor: window.chartColors.yellow,
-                            data: { { multiple } }
-        },
-        {
-            label: 'Integrated Factor',
-                fill: false,
-                    data: { { integrated_factor } },
-            backgroundColor: window.chartColors.red,
-                borderColor: window.chartColors.red,
+                    borderColor: window.chartColors.yellow,
+                    data: {{ multiple }}
+                },
+                {
+                    label: 'Integrated Factor',
+                    fill: false,
+                    data: {{ integrated_factor }},
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
                     borderWidth: 1
-        }]
-            },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
                 }]
             },
-            elements: {
-                line: {
-                    tension: 0 // disables bezier curves
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                elements: {
+                    line: {
+                        tension: 0 // disables bezier curves
+                    }
+                },
+                title: {
+                    display: true,
+                        text: 'Goldman Sachs Marquee API'
+                },
+                legend: {
+                    display: true,
+                        position: "left"
                 }
-            },
-            title: {
-                display: true,
-                    text: 'Goldman Sachs Marquee API'
-            },
-            legend: {
-                display: true,
-                    position: "left"
             }
-        }
         });
     </script>
 </body>

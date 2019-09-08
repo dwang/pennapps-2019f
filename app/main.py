@@ -1,5 +1,6 @@
 import marquee
 import alphavantage
+from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
@@ -12,6 +13,9 @@ def home():
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if request.method == "POST":
+        if not request.form.get("ticker"):
+            return redirect(url_for("home"))
+
         ticker = request.form.get("ticker").split("-")[0].strip()
         data = marquee.query_dataset(ticker)
         integrated_factor = []
@@ -25,7 +29,7 @@ def dashboard():
             multiple.append(data["data"][i * int(len(data["data"]) / 120) - 1]["multipleScore"])
             integrated_factor.append(data["data"][i * int(len(data["data"]) / 120) - 1]["integratedScore"])
 
-        return render_template("dashboard.html", ticker=ticker, integrated_factor=integrated_factor, growth=growth, financial_returns=financial_returns, multiple=multiple)
+        return render_template("dashboard.html", ticker=request.form.get("ticker"), integrated_factor=integrated_factor, growth=growth, financial_returns=financial_returns, multiple=multiple)
 
     return redirect(url_for("home"))
 
