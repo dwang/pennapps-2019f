@@ -19,7 +19,9 @@
             <div class="col-md-3"></div>
         </div>
 
-        <br> <br> <br>
+        <br>
+        <br>
+        <br>
 
         <div class="row">
             <div class="col"></div>
@@ -27,22 +29,18 @@
             <div class="col-md-auto">
                 <form class="form-inline" method="POST" action="/dashboard">
                     <label class="sr-only" for="inlineFormInputGroupUsername2">AAPL</label>
-                    <!-- <div class="col-xs-4 input-group mb-2 mr-sm-2"> -->
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">Ticker</div>
-                        </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Ticker</div>
+                    </div>
 
-                        <!-- <form > -->
-                            <input type="text" class="form-control input-lg" id="inputlg" placeholder="AAPL"aria-label="Ticker"
-                    aria-describedby="basic-addon1">
+                    <input type="text" class="form-control input-lg" id="inputlg" placeholder="AAPL" aria-label="Ticker"
+                        aria-describedby="basic-addon1">
 
-                            <button type="submit" class="btn btn-primary mb-2" >Submit</button>
-                        <!-- </form> -->
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
                 </form>
             </div>
             <div class="col"></div>
             <div class="col"></div>
-
         </div>
 
         <br>
@@ -57,21 +55,13 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.6/jquery.typeahead.min.js" integrity="sha256-W+Cxk9exgjON2p73M4RcoKvCpQUZ+IjXhEzZk6rlg9M=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"
+        integrity="sha256-LOnFraxKlOhESwdU/dX+K0GArwymUDups0czPWLEg4E=" crossorigin="anonymous"></script>
 
     <script>
-        var companies = new Array();
-
         $.get("{{ url_for('static', filename='json/companies.json') }}", function (data) {
-            $.each(data, function (ticker, name) {
-                companies.push(name[1]);
-            });
-        }, 'json');
-
-        console.log(companies);
-
-        $(".input-field").typeahead({ source: companies });
+            $(".tickers").typeahead({ source: data, displayText: function (item) { return item[0] + " - " + item[1]; } });
+        }, 'json')
     </script>
 </body>
 

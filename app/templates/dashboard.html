@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -51,99 +51,74 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script>
+        window.chartColors = {
+            red: 'rgb(255, 99, 132)',
+            orange: 'rgb(255, 159, 64)',
+            yellow: 'rgb(255, 205, 86)',
+            green: 'rgb(75, 192, 192)',
+            blue: 'rgb(54, 162, 235)',
+            purple: 'rgb(153, 102, 255)',
+            grey: 'rgb(201, 203, 207)'
+        };
+
         var ctx = document.getElementById("gsChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                datasets: [{
-                    label: 'Sentiment Score',
-                    data: [-0.98, -0.42, 0.12, -0.55, 0.94, 0.44, 0.4],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                labels: ["2012 FYQ3", "2012 FYQ4", "2013 FYQ1", "2013 FYQ2", "2013 FYQ3", "2013 FYQ4", "2014 FYQ1", "2014 FYQ2", "2014 FYQ3", "2014 FYQ4", "2015 FYQ1", "2015 FYQ2", "2015 FYQ3", "2015 FYQ4", "2016 FYQ1", "2016 FYQ2", "2016 FYQ3", "2016 FYQ4", "2017 FYQ1", "2017 FYQ2", "2017 FYQ3"],
+                datasets: [
+                    {
+                        label: 'Growth',
+                        fill: false,
+                        backgroundColor: window.chartColors.blue,
+                        borderColor: window.chartColors.blue,
+                        data: {{ growth }}
+        },
+            {
+                label: 'Financial Returns',
+                fill: false,
+                backgroundColor: window.chartColors.green,
+                borderColor: window.chartColors.green,
+                data: {{ financial_returns }}
+                },
+        {
+            label: 'Multiple',
+                fill: false,
+                    backgroundColor: window.chartColors.yellow,
+                        borderColor: window.chartColors.yellow,
+                            data: { { multiple } }
+        },
+        {
+            label: 'Integrated Factor',
+                fill: false,
+                    data: { { integrated_factor } },
+            backgroundColor: window.chartColors.red,
+                borderColor: window.chartColors.red,
                     borderWidth: 1
+        }]
+            },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
                 }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                elements: {
-                    line: {
-                        tension: 0 // disables bezier curves
-                    }
-                },
-                legend: {
-                    display: true,
-                    position: "left"
+            elements: {
+                line: {
+                    tension: 0 // disables bezier curves
                 }
-            }
-        });
-    </script>
-    <script>
-        var ctx = document.getElementById("psChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                datasets: [{
-                    label: 'Sentiment Score',
-                    data: [-0.98, -0.42, 0.12, -0.55, 0.94, 0.44, 0.8],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                elements: {
-                    line: {
-                        tension: 0 // disables bezier curves
-                    }
-                },
-                legend: {
-                    display: true,
+            title: {
+                display: true,
+                    text: 'Goldman Sachs Marquee API'
+            },
+            legend: {
+                display: true,
                     position: "left"
-                }
             }
+        }
         });
     </script>
 </body>
